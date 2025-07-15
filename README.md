@@ -1,13 +1,5 @@
 # Welcome to pixel-powerpoint-genie
 
-## Project info
-# url: pixel-powerpoint-genie-86.lovable.app
-## How can I edit this code?
-
-There are several ways of editing your application.
-
-
-
 ```sh
 # Step 1: Clone the repository using the project's Git URL.
 git clone <YOUR_GIT_URL>
