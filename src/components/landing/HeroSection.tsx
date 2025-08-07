@@ -3,6 +3,7 @@ import { useRef } from "react";
 import { motion, useInView, useTransform } from "framer-motion";
 import { ArrowDownIcon, ArrowRightIcon, PresentationIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { BackgroundPaths } from "@/components/ui/background-paths";
 
 interface HeroSectionProps {
   scrollYProgress: any;
@@ -20,20 +21,18 @@ export function HeroSection({ scrollYProgress, onGetStarted }: HeroSectionProps)
   return (
     <motion.div
       ref={heroRef}
-      className="min-h-screen hero-gradient flex flex-col items-center justify-center px-4 text-white relative overflow-hidden"
+      className="relative min-h-screen"
       style={{ y: heroY, opacity: heroOpacity }}
     >
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-1/4 left-1/4 w-64 h-64 rounded-full bg-white/10 filter blur-3xl" />
-        <div className="absolute bottom-1/3 right-1/3 w-96 h-96 rounded-full bg-purple-500/10 filter blur-3xl" />
-      </div>
+      <BackgroundPaths title="PowerPoint Genie" />
 
-      <motion.div
-        className="max-w-3xl mx-auto text-center z-10"
-        initial={{ opacity: 0, y: 50 }}
-        animate={heroInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
-      >
+      <div className="absolute inset-0 flex flex-col items-center justify-center px-4 z-10">
+        <motion.div
+          className="max-w-3xl mx-auto text-center"
+          initial={{ opacity: 0, y: 50 }}
+          animate={heroInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+        >
         <motion.div
           className="flex items-center justify-center mb-6 space-x-4"
           initial={{ scale: 0 }}
@@ -75,15 +74,16 @@ export function HeroSection({ scrollYProgress, onGetStarted }: HeroSectionProps)
             <ArrowRightIcon className="ml-2 h-5 w-5" />
           </Button>
         </motion.div>
-      </motion.div>
+        </motion.div>
 
-      <motion.div
-        className="absolute bottom-10 left-1/2 transform -translate-x-1/2 cursor-pointer"
-        animate={{ y: [0, 10, 0] }}
-        transition={{ duration: 1.5, repeat: Infinity }}
-      >
-        <ArrowDownIcon className="h-10 w-10 opacity-70" />
-      </motion.div>
+        <motion.div
+          className="absolute bottom-10 left-1/2 transform -translate-x-1/2 cursor-pointer"
+          animate={{ y: [0, 10, 0] }}
+          transition={{ duration: 1.5, repeat: Infinity }}
+        >
+          <ArrowDownIcon className="h-10 w-10 opacity-70" />
+        </motion.div>
+      </div>
     </motion.div>
   );
 }
