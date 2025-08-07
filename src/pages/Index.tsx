@@ -5,6 +5,7 @@ import { LandingPage } from "@/components/LandingPage";
 import { AppBuilder } from "@/components/AppBuilder";
 import { NavBar } from "@/components/NavBar";
 import { Toaster } from "@/components/ui/toaster";
+import { BackgroundPaths } from "@/components/ui/background-paths";
 
 const Index = () => {
   const [showApp, setShowApp] = useState<boolean>(false);
@@ -19,8 +20,10 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen">
-      <NavBar onThemeChange={handleThemeChange} />
+    <div className="min-h-screen relative">
+      <BackgroundPaths title="PowerPoint Genie" />
+      <div className="relative z-10">
+        <NavBar onThemeChange={handleThemeChange} />
       
       <AnimatePresence mode="wait">
         {!showApp ? (
@@ -45,9 +48,10 @@ const Index = () => {
             <AppBuilder />
           </motion.div>
         )}
-      </AnimatePresence>
-      
-      <Toaster />
+        </AnimatePresence>
+        
+        <Toaster />
+      </div>
     </div>
   );
 };
